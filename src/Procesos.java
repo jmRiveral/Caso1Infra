@@ -1,45 +1,59 @@
-public class Procesos extends  Thread {
-    private int id;
-    private int tiempo;
-    private boolean tipoEnvio;
-    private boolean tipoRecepcion;
+public class Procesos extends  Thread 
+{
+	private int id;
+	private int tiempo;
+	private boolean tipoEnvio;
+	private boolean tipoRecepcion;
 
-    public Procesos(int pId,int pTiempo,boolean boolean1,boolean boolean2){
-        this.id=pId;
-        this.tiempo=pTiempo;
-        this.tipoEnvio=boolean1;
-        this.tipoRecepcion=boolean2;
-    }
+	public Procesos(int pId,int pTiempo,boolean boolean1,boolean boolean2){
+		this.id=pId;
+		this.tiempo=pTiempo;
+		this.tipoEnvio=boolean1;
+		this.tipoRecepcion=boolean2;
+	}
 
-    public long getId() {
-        return id;
-    }
+	public long getId()
+	{
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id)
+	{
+		this.id = id;
+	}
 
-    public int getTiempo() {
-        return tiempo;
-    }
+	public int getTiempo()
+	{
+		return tiempo;
+	}
 
-    public void setTiempo(int tiempo) {
-        this.tiempo = tiempo;
-    }
+	public void setTiempo(int tiempo) 
+	{
+		this.tiempo = tiempo;
+	}
 
-    public boolean isTipoEnvio() {
-        return tipoEnvio;
-    }
+	public boolean isTipoEnvio()
+	{
+		return tipoEnvio;
+	}
 
-    public boolean isTipoRecepcion() {
-        return tipoRecepcion;
-    }
+	public boolean isTipoRecepcion()
+	{
+		return tipoRecepcion;
+	}
 
-    public void setTipoEnvio(boolean tipoEnvio) {
-        this.tipoEnvio = tipoEnvio;
-    }
+	public void setTipoEnvio(boolean tipoEnvio) 
+	{
+		this.tipoEnvio = tipoEnvio;
+	}
 
-    public void setTipoRecepcion(boolean tipoRecepcion) {
-        this.tipoRecepcion = tipoRecepcion;
-    }
+	public void setTipoRecepcion(boolean tipoRecepcion) 
+	{
+		this.tipoRecepcion = tipoRecepcion;
+	}
+	
+	public void iniciar() 
+	{
+		
+	}
 }
