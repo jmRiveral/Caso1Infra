@@ -1,4 +1,4 @@
-public class Procesos {
+public class Procesos extends  Thread {
     private int id;
     private int tiempo;
     private boolean tipoEnvio;
@@ -11,7 +11,7 @@ public class Procesos {
         this.tipoRecepcion=boolean2;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
