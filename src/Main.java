@@ -1,12 +1,13 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
-    private static  final String path ="C:\\Users\\alejo\\OneDrive\\Documentos\\GitHub\\Caso1Infra\\src\\Data\\Inicializacion.txt";
-    private static Buzon[] buzons = new Buzon[20];
+    private static  final String path ="C:\\Users\\Josué\\Documents\\Proyectos\\Caso1\\src\\Data\\Inicializacion.txt";
+    private static ArrayList<Buzon> buzons = new ArrayList<Buzon>();
     private static String[] mensajes;
-    private static final String mensajesPath="C:\\Users\\alejo\\OneDrive\\Documentos\\GitHub\\Caso1Infra\\src\\Data\\Mensajes.txt";
+    private static final String mensajesPath="C:\\Users\\Josué\\Documents\\Proyectos\\Caso1\\src\\Data\\Mensajes.txt";
     
     public static void main(String[] args) throws Exception
     {
@@ -24,19 +25,26 @@ public class Main {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
         int counter=0;
+        int x=1;
         while ((st = br.readLine()) != null){
             if (counter<4) 
             {
                 String[] a = st.split(" ");
-                buzons[counter]= new Buzon(a[0],Integer.parseInt(a[1]));
+                Buzon anadir = new Buzon(a[0], Integer.parseInt(a[1]));
+                buzons.add(anadir);
+
+
             }
             else  
             {
+                System.out.println(counter);
+                System.out.println(buzons.get(counter-4).getId());
                 String[] a = st.split(" ");
-                Procesos obj= new Procesos(Integer.parseInt(a[0]),Integer.parseInt(a[1]),Boolean.parseBoolean(a[2]),Boolean.parseBoolean(a[3]),buzons[counter-4]);
-                obj.start();
-                System.out.print("Proceso "+ a[0]+" creado correctamenta"+"/ln");
-                System.out.println(obj.getBufferBuzon().getId());
+                if (x==1) {
+                    Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(counter-4), buzons.get(3-x));
+                }
+                //obj.start();
+                x++;
             }
             counter++;	
 
@@ -60,10 +68,6 @@ public class Main {
                 
     }
 
-    public void run()
-    {
-
-    }
 
 
 }
