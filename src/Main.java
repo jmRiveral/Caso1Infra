@@ -12,10 +12,14 @@ public class Main {
     {
     	System.out.print("Porfavor ingresar cantidad de mensajes deseados");
     	Scanner cs = new Scanner(System.in);
-    	
     	int cantidad = cs.nextInt();
     	cargarMensajes(cantidad);
-        File file = new File(path);
+        inicioDePrograma();
+    }
+
+    public static void inicioDePrograma() throws Exception
+    {
+    	File file = new File(path);
         System.out.println(file.getAbsolutePath());
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
@@ -38,9 +42,8 @@ public class Main {
 
         }
     }
-
-    
-    public static void cargarMensajes(int cantidad) throws Exception {
+    public static void cargarMensajes(int cantidad) throws Exception 
+    {
     	 
 
     	File file = new File(mensajesPath);
