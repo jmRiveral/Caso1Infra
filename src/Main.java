@@ -1,10 +1,11 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     private static  final String path ="C:\\Users\\alejo\\OneDrive\\Documentos\\GitHub\\Caso1Infra\\src\\Data\\Inicializacion.txt";
-    private static Buzon[] buzons = new Buzon[20];
+    private static ArrayList<Buzon> buzons = new ArrayList<Buzon>();
     private static String[] mensajes;
     private static final String mensajesPath="C:\\Users\\alejo\\OneDrive\\Documentos\\GitHub\\Caso1Infra\\src\\Data\\Mensajes.txt";
     
@@ -25,7 +26,7 @@ public class Main {
             if (counter<4) 
             {
                 String[] a = st.split(" ");
-                buzons[counter]= new Buzon(a[0],Integer.parseInt(a[1]));
+                buzons.add(new Buzon(a[0],Integer.parseInt(a[1])));
             }
             else  
             {
@@ -60,7 +61,7 @@ public class Main {
 
     public void run()
     {
-
+    	
     }
 
 
