@@ -11,10 +11,7 @@ public class Main {
     
     public static void main(String[] args) throws Exception
     {
-    	System.out.print("Porfavor ingresar cantidad de mensajes deseados");
-    	Scanner cs = new Scanner(System.in);
-    	int cantidad = cs.nextInt();
-    	cargarMensajes(cantidad);
+    	cargarMensajes();
         inicioDePrograma();
     }
 
@@ -45,15 +42,19 @@ public class Main {
                 }
                 //obj.start();
                 x++;
+
+
+                System.out.print("Proceso "+ a[0]+" creado correctamente ");
             }
             counter++;	
 
         }
     }
-    public static void cargarMensajes(int cantidad) throws Exception 
+    public static void cargarMensajes() throws Exception 
     {
-    	 
-
+    	System.out.print("Porfavor ingresar cantidad de mensajes deseados");
+    	Scanner cs = new Scanner(System.in);
+    	int cantidad = cs.nextInt();
     	File file = new File(mensajesPath);
         System.out.println();
         BufferedReader br = new BufferedReader(new FileReader(file));
