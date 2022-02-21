@@ -10,10 +10,7 @@ public class Main {
     
     public static void main(String[] args) throws Exception
     {
-    	System.out.print("Porfavor ingresar cantidad de mensajes deseados");
-    	Scanner cs = new Scanner(System.in);
-    	int cantidad = cs.nextInt();
-    	cargarMensajes(cantidad);
+    	cargarMensajes();
         inicioDePrograma();
     }
 
@@ -35,17 +32,18 @@ public class Main {
                 String[] a = st.split(" ");
                 Procesos obj= new Procesos(Integer.parseInt(a[0]),Integer.parseInt(a[1]),Boolean.parseBoolean(a[2]),Boolean.parseBoolean(a[3]),buzons[counter-4]);
                 obj.start();
-                System.out.print("Proceso "+ a[0]+" creado correctamenta"+"/ln");
+                System.out.print("Proceso "+ a[0]+" creado correctamente ");
                 System.out.println(obj.getBufferBuzon().getId());
             }
             counter++;	
 
         }
     }
-    public static void cargarMensajes(int cantidad) throws Exception 
+    public static void cargarMensajes() throws Exception 
     {
-    	 
-
+    	System.out.print("Porfavor ingresar cantidad de mensajes deseados");
+    	Scanner cs = new Scanner(System.in);
+    	int cantidad = cs.nextInt();
     	File file = new File(mensajesPath);
         System.out.println();
         BufferedReader br = new BufferedReader(new FileReader(file));
