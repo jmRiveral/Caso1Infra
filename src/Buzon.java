@@ -43,7 +43,7 @@ public class Buzon
         this.capacidad = capacidad;
     }
     
-    public void anadirMensaje(String mensaje)
+    public synchronized void anadirMensaje(String mensaje)
     {
     	mensajes.add(mensaje);
     	notify();

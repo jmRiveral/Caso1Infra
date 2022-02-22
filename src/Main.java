@@ -55,14 +55,16 @@ public class Main
                 String[] a = st.split(" ");
                 if (x==1) 
                 {
+
                     Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(0), buzons.get(buzons.size()-1), mensajes, contador );
                     obj.start();
+                    System.out.print("Proceso "+ a[0]+" creado correctamente con buzones: "+buzons.get(0).getId()+","+ buzons.get(buzons.size()-1).getId()+ "\n");
                 }
                 else
                 {
                     Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(counter-4), buzons.get(counter-5), mensajes, contador);
                     obj.start();
-                    System.out.print("Proceso "+ a[0]+" creado correctamente con buzones: "+buzons.get(counter-4).getId()+","+ buzons.get(counter-5).getId());
+                    System.out.print("Proceso "+ a[0]+" creado correctamente con buzones: "+buzons.get(counter-4).getId()+","+ buzons.get(counter-5).getId()+ "\n") ;
                 }
                 x++;
             }
