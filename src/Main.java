@@ -6,10 +6,10 @@ public class Main
 {
 
 	private static int contador;	
-    private static  final String path ="C:\\Users\\Josué\\Documents\\Proyectos\\Caso1\\src\\Data\\Inicializacion.txt";
+    private static  final String path ="./Data/Inicializacion.txt";
     private static ArrayList<Buzon> buzons = new ArrayList<Buzon>();
     private static String[] mensajes;
-    private static final String mensajesPath="C:\\Users\\Josué\\Documents\\Proyectos\\Caso1\\src\\Data\\Mensajes.txt";
+    private static final String mensajesPath="./Data/Mensajes.txt";
     
     public static void main(String[] args) throws Exception
     {
