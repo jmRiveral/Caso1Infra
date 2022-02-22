@@ -2,13 +2,16 @@ public class Procesos extends  Thread
 {
 	private int id;
 	private int tiempo;
+	private int cantMensajes;
 	private boolean tipoEnvio;
 	private boolean tipoRecepcion;
 	private Buzon buzonEnvio;
 	private Buzon buzonRetiro;
 	private String mensaje;
+	private String[] primerosMensajes;
 	
-	public Procesos(int pId, int pTiempo, boolean boolean1, boolean boolean2, Buzon buzonEnvia, Buzon buzonRetira)
+	
+	public Procesos(int pId, int pTiempo, boolean boolean1, boolean boolean2, Buzon buzonEnvia, Buzon buzonRetira, String[] primerosMensajes, int pCantMensajes)
 	{
 		this.id=pId;
 		this.tiempo=pTiempo;
@@ -17,6 +20,8 @@ public class Procesos extends  Thread
 		this.buzonEnvio =buzonEnvia;
 		this.buzonRetiro=buzonRetira;
 		this.mensaje = " ";
+		cantMensajes = pCantMensajes;
+		primerosMensajes = new String[cantMensajes]; 
 	}
 
 	public long getId()
@@ -76,42 +81,60 @@ public class Procesos extends  Thread
 	{
 		this.buzonRetiro=besh;
 	}
-	public void darMensaje(String mensaje) throws InterruptedException
+	
+	public void cambiarMensaje(String pMensaje)
+	{
+		mensaje = pMensaje;
+	}
+	
+	public synchronized void darMensaje(String pMensaje) throws InterruptedException
 	{
 		sleep(tiempo);
 		if(tipoEnvio == true)
 		{
 			while( this.buzonEnvio.estaLleno() != false)
 					Thread.yield();
-			this.buzonEnvio.anadirMensaje(mensaje);
+			this.buzonEnvio.anadirMensaje(pMensaje);
 		}
 		else
 		{
-			this.buzonEnvio.almacenarMsjPasivo(mensaje);
+			this.buzonEnvio.almacenarMsjPasivo(pMensaje);
 		}	
 	}
-	public String traerMensaje() throws InterruptedException
+	public synchronized void traerMensaje() throws InterruptedException
 	{
 		if(tipoRecepcion == true)
 		{
 			while( this.buzonEnvio.darMensajes().isEmpty() == true)
 				Thread.yield();
-			return this.buzonRetiro.darPrimerMensaje();
+			mensaje = this.buzonRetiro.darPrimerMensaje();
 		}
 		else
 		{
-			return this.buzonRetiro.retirarMsj();
+			mensaje = this.buzonRetiro.retirarMsj();
 		}
 	}
-	public void run() 
+	
+	public void primerosMensajes(int pCantidad, String[] pMensajes) throws InterruptedException
+	{
+		for(int i = 0; i < pMensajes.length; i ++)
+		{
+			mensaje = pMensajes[0];
+			darMensaje(mensaje);
+		}
+	}
+	public void run(int pCantidad, String[] pMensajes) 
 	{
 		try
 		{
+			if(this.id == 1)
+			{
+				primerosMensajes(pCantidad, pMensajes);
+			}
 			while(mensaje.equals("FIN") != true)
 			{
-			
-					traerMensaje();
-					darMensaje(mensaje);
+				traerMensaje();
+				darMensaje(mensaje);
 			} 
 			this.join();
 		}	

@@ -2,8 +2,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class Main 
+{
 
+	private static int contador;	
     private static  final String path ="C:\\Users\\Josué\\Documents\\Proyectos\\Caso1\\src\\Data\\Inicializacion.txt";
     private static ArrayList<Buzon> buzons = new ArrayList<Buzon>();
     private static String[] mensajes;
@@ -11,10 +13,29 @@ public class Main {
     
     public static void main(String[] args) throws Exception
     {
+    	contador = 0;
     	cargarMensajes();
         inicioDePrograma();
     }
 
+    public static void cargarMensajes() throws Exception 
+    {
+    	System.out.print("Porfavor ingresar cantidad de mensajes deseados");
+    	Scanner cs = new Scanner(System.in);
+    	int cantidad = cs.nextInt();
+    	File file = new File(mensajesPath);
+        System.out.println();
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String st;
+        mensajes= new String[cantidad];
+        while ((st = br.readLine()) != null && contador!=cantidad){
+          mensajes[contador]=st;
+          System.out.print("mensaje:"+st+" cargado \n");
+          contador++;
+        }
+                
+    }
+    
     public static void inicioDePrograma() throws Exception
     {
     	File file = new File(path);
@@ -32,11 +53,14 @@ public class Main {
             else  
             {
                 String[] a = st.split(" ");
-                if (x==1) {
-                    Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(0), buzons.get(buzons.size()-1));
+                if (x==1) 
+                {
+                    Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(0), buzons.get(buzons.size()-1), mensajes, contador );
                     obj.start();
-                }else{
-                    Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(counter-4), buzons.get(counter-5));
+                }
+                else
+                {
+                    Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(counter-4), buzons.get(counter-5), mensajes, contador);
                     obj.start();
                     System.out.print("Proceso "+ a[0]+" creado correctamente con buzones: "+buzons.get(counter-4).getId()+","+ buzons.get(counter-5).getId());
                 }
@@ -45,25 +69,5 @@ public class Main {
             counter++;	
         }
     }
-    public static void cargarMensajes() throws Exception 
-    {
-    	System.out.print("Porfavor ingresar cantidad de mensajes deseados");
-    	Scanner cs = new Scanner(System.in);
-    	int cantidad = cs.nextInt();
-    	File file = new File(mensajesPath);
-        System.out.println();
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String st;
-        mensajes= new String[cantidad];
-        int counter = 0;
-        while ((st = br.readLine()) != null && counter!=cantidad){
-          mensajes[counter]=st;
-          System.out.print("mensaje:"+st+" cargado \n");
-          counter++;
-        }
-                
-    }
-
-
 
 }

@@ -46,6 +46,7 @@ public class Buzon
     public void anadirMensaje(String mensaje)
     {
     	mensajes.add(mensaje);
+    	notify();
     }
     public boolean estaLleno()
     {
