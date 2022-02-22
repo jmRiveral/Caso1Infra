@@ -35,7 +35,7 @@ public class Buzon
     
     public String darPrimerMensaje()
     {
-		return mensajes.get(0);
+		return mensajes.remove(0);
     	
     }
     public void setCapacidad(int capacidad) 

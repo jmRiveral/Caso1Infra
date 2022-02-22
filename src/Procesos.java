@@ -156,7 +156,7 @@ public class Procesos extends  Thread
 				}
 
 			}
-			System.out.println("Found Fin");
+			System.out.println("Found FIN");
 			this.join();
 		}	
 		catch (InterruptedException e) 
