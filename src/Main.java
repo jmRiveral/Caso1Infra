@@ -41,9 +41,9 @@ public class Main {
                     obj.start();
                     System.out.println( buzons.get(0).getId()+","+ buzons.get(buzons.size()-1).getId());
                 }else{
-                    Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(counter-5), buzons.get(counter-4));
+                    Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(counter-4), buzons.get(counter-5));
                     obj.start();
-                    System.out.println( buzons.get(counter-5).getId()+","+ buzons.get(counter-4).getId());
+                    System.out.println( buzons.get(counter-4).getId()+","+ buzons.get(counter-5).getId());
 
                 }
 
