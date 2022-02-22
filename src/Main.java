@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static  final String path ="C:\\Users\\alejo\\OneDrive\\Documentos\\GitHub\\Caso1Infra\\src\\Data\\Inicializacion.txt";
+    private static  final String path ="C:\\Users\\Josué\\Documents\\Proyectos\\Caso1\\src\\Data\\Inicializacion.txt";
     private static ArrayList<Buzon> buzons = new ArrayList<Buzon>();
     private static String[] mensajes;
-    private static final String mensajesPath="C:\\Users\\alejo\\OneDrive\\Documentos\\GitHub\\Caso1Infra\\src\\Data\\Mensajes.txt";
+    private static final String mensajesPath="C:\\Users\\Josué\\Documents\\Proyectos\\Caso1\\src\\Data\\Mensajes.txt";
     
     public static void main(String[] args) throws Exception
     {
@@ -22,6 +22,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
         int counter=0;
+        int x=1;
         while ((st = br.readLine()) != null){
             if (counter<4) 
             {
@@ -31,10 +32,21 @@ public class Main {
             else  
             {
                 String[] a = st.split(" ");
-                Procesos obj= new Procesos(Integer.parseInt(a[0]),Integer.parseInt(a[1]),Boolean.parseBoolean(a[2]),Boolean.parseBoolean(a[3]),buzons[counter-4]);
-                obj.start();
-                System.out.print("Proceso "+ a[0]+" creado correctamente ");
-                System.out.println(obj.getBuzon().getId());
+                if (x==1) {
+                    Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(0), buzons.get(buzons.size()-1));
+                    obj.start();
+                }else{
+                    Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(counter-4), buzons.get(counter-5));
+                    obj.start();
+                    System.out.print("Proceso "+ a[0]+" creado correctamente con buzones: "+buzons.get(counter-4).getId()+","+ buzons.get(counter-5).getId());
+                }
+
+                x++;
+
+
+
+
+
             }
             counter++;	
 
@@ -59,10 +71,6 @@ public class Main {
                 
     }
 
-    public void run()
-    {
-    	
-    }
 
 
 }

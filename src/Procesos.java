@@ -8,7 +8,7 @@ public class Procesos extends  Thread
 	private Buzon buzonRetiro;
 
 	private String[] mensajes;
-	public Procesos(int pId,int pTiempo,boolean boolean1,boolean boolean2, Buzon buzonEnvia,Buzon buzonRetira){
+	public Procesos(int pId, int pTiempo, boolean boolean1, boolean boolean2, Buzon buzonEnvia, Buzon buzonRetira){
 		this.id=pId;
 		this.tiempo=pTiempo;
 		this.tipoEnvio=boolean1;

@@ -6,7 +6,7 @@ public class Buzon
     private int capacidad;
     private ArrayList<String> mensajes;
 
-    public Buzon(String pId,int pcCapacidad)
+    public Buzon(String pId, int pcCapacidad)
     {
         this.id=pId;
         this.capacidad=pcCapacidad;
