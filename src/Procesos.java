@@ -134,7 +134,7 @@ public class Procesos extends  Thread
 		}
 	}
 	public void run()
-	{
+	{ int x= 0;
 		try
 		{
 
@@ -142,14 +142,21 @@ public class Procesos extends  Thread
 			{
 
 				primerosMensajesLeer(primerosMensajes.length,primerosMensajes);
+				notify();
 
 			}
+
 			while(mensaje.equals("FIN") != true)
 			{
-				System.out.println(this.id+ "entra run");
-				traerMensaje();
 				darMensaje(mensaje);
+				traerMensaje();
+				if (this.id==4){
+					System.out.println("mensaje"+x+" completo ciclo");
+					x++;
+				}
+
 			}
+			System.out.println("Found Fin");
 			this.join();
 		}	
 		catch (InterruptedException e) 
