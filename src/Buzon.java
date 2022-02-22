@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
-public class Buzon 
+public class Buzon
 {
     private String id;
     private int capacidad;
     private ArrayList<String> mensajes;
 
-    public Buzon(String pId,int pcCapacidad)
+    public Buzon(String pId, int pcCapacidad)
     {
         this.id=pId;
         this.capacidad=pcCapacidad;

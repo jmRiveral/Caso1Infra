@@ -27,14 +27,10 @@ public class Main {
             if (counter<4) 
             {
                 String[] a = st.split(" ");
-                Buzon anadir = new Buzon(a[0], Integer.parseInt(a[1]));
-                buzons.add(anadir);
-
-
+                buzons.add(new Buzon(a[0],Integer.parseInt(a[1])));
             }
             else  
             {
-
                 String[] a = st.split(" ");
                 if (x==1) {
                     Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(0), buzons.get(buzons.size()-1));
@@ -42,13 +38,15 @@ public class Main {
                 }else{
                     Procesos obj = new Procesos(Integer.parseInt(a[0]), Integer.parseInt(a[1]), Boolean.parseBoolean(a[2]), Boolean.parseBoolean(a[3]), buzons.get(counter-4), buzons.get(counter-5));
                     obj.start();
-
+                    System.out.print("Proceso "+ a[0]+" creado correctamente con buzones: "+buzons.get(counter-4).getId()+","+ buzons.get(counter-5).getId());
                 }
 
                 x++;
 
 
-                System.out.print("Proceso "+ a[0]+" creado correctamente ");
+
+
+
             }
             counter++;	
 
