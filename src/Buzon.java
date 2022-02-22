@@ -6,10 +6,10 @@ public class Buzon
     private int capacidad;
     private ArrayList<String> mensajes;
 
-    public Buzon(String pId, int pcCapacidad)
+    public Buzon(String pId, int pCapacidad)
     {
         this.id=pId;
-        this.capacidad=pcCapacidad;
+        this.capacidad=pCapacidad;
         this.mensajes = new ArrayList<String>();
     }
 
@@ -28,14 +28,32 @@ public class Buzon
         return id;
     }
 
+    public ArrayList<String> darMensajes()
+    {
+    	return mensajes;
+    }
+    
+    public String darPrimerMensaje()
+    {
+		return mensajes.get(0);
+    	
+    }
     public void setCapacidad(int capacidad) 
     {
         this.capacidad = capacidad;
     }
     
-    public synchronized void almacenarMsj (Integer i,String msj ) throws InterruptedException
+    public void anadirMensaje(String mensaje)
     {
-    	while(mensajes.size() == capacidad)
+    	mensajes.add(mensaje);
+    }
+    public boolean estaLleno()
+    {
+    	return (mensajes.size() == capacidad);
+    }
+    public synchronized void almacenarMsjPasivo(String msj) throws InterruptedException
+    {
+    	while(estaLleno() != false)
     		wait() ;
     	
     	mensajes.add(msj);
@@ -44,7 +62,7 @@ public class Buzon
     
     public synchronized String retirarMsj() throws InterruptedException
     {
-    	while(mensajes.size() == 0)
+    	while(mensajes.isEmpty() == true)
     		wait();
     	String msjRetirado = (String) mensajes.remove(0);
     	notify();

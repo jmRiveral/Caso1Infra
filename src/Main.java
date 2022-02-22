@@ -40,16 +40,9 @@ public class Main {
                     obj.start();
                     System.out.print("Proceso "+ a[0]+" creado correctamente con buzones: "+buzons.get(counter-4).getId()+","+ buzons.get(counter-5).getId());
                 }
-
                 x++;
-
-
-
-
-
             }
             counter++;	
-
         }
     }
     public static void cargarMensajes() throws Exception 
