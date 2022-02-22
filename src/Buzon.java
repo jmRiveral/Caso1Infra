@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Buzon 
+public class Buzon
 {
     private String id;
     private int capacidad;

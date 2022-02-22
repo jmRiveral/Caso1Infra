@@ -34,7 +34,7 @@ public class Main {
                 Procesos obj= new Procesos(Integer.parseInt(a[0]),Integer.parseInt(a[1]),Boolean.parseBoolean(a[2]),Boolean.parseBoolean(a[3]),buzons[counter-4]);
                 obj.start();
                 System.out.print("Proceso "+ a[0]+" creado correctamente ");
-                System.out.println(obj.getBufferBuzon().getId());
+                System.out.println(obj.getBuzon().getId());
             }
             counter++;	
 
